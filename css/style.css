@@ -308,6 +308,24 @@ button {
     }
 } /* Closing brace for media query */
 
+@media (max-width: 768px) {
+    .header {
+        height: auto;
+        padding: 0.5rem 0;
+    }
+
+    .nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-left: auto; /* Push to right */
+    }
+
+    .cart-count {
+        top: -5px;
+        right: -5px;
+    }
+}
+
 /* Navigation & Dropdown */
 .nav {
     display: flex;
