@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique 2FA&CO | Commande WhatsApp</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-gem"></i></span>
+                Boutique<span class="highlight">2FA&CO</span>
+            </a>
+            
+            <nav class="nav">
+                <!-- Category Dropdown -->
+                <div class="dropdown">
+                    <button class="dropdown-toggle" id="category-toggle">
+                        Catégories <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu" id="category-menu">
+                        <!-- Categories injected by JS -->
+                        <a href="#" data-category="all" class="active">Tous les articles</a>
+                    </div>
+                </div>
+
+                <button id="cart-btn" class="cart-btn" aria-label="Voir le panier">
+                    <i class="fa-solid fa-shopping-bag"></i>
+                    <span id="cart-count" class="cart-count">0</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>L'élégance à portée de main</h1>
+            <p>Commandez vos articles préférés directement sur WhatsApp. Simple. Rapide. Sécurisé.</p>
+            
+            <!-- Search Bar -->
+            <div class="hero-search">
+                <input type="text" id="search-input" placeholder="Rechercher un produit...">
+                <button id="search-clear" class="search-clear" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+                <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            
+            <div class="hero-actions" style="margin-top: 2rem;">
+                 <a href="#catalogue" class="btn btn-primary">Voir les produits <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalogue -->
+    <section id="catalogue" class="section products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Produits</h2>
+                <!-- Active filters display could go here -->
+            </div>
+            
+            <div id="product-grid" class="product-grid">
+                <!-- Products injected by JS -->
+                <div class="loading-state">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Chargement...
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-container">
+                <div id="pagination" class="pagination">
+                    <!-- Buttons injected by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Boutique 2FA&CO. Tous droits réservés.</p>
+            <div class="socials">
+                <a href="https://wa.me/+22607142862" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar/Modal -->
+    <div id="cart-overlay" class="cart-overlay"></div>
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Votre Panier</h3>
+            <button id="close-cart" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div id="cart-items" class="cart-items">
+            <!-- Cart items injected by JS -->
+            <!-- Empty state default -->
+            <div class="empty-cart">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <p>Votre panier est vide</p>
+                <button class="btn btn-outline close-cart-trigger">Continuer mes achats</button>
+            </div>
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cart-total-price">0 FCFA</span>
+            </div>
+            <button id="checkout-btn" class="btn btn-primary btn-block">Valider la commande</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Finaliser la commande</h3>
+                <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label for="name">Nom complet *</label>
+                        <input type="text" id="name" required placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Numéro WhatsApp *</label>
+                        <input type="tel" id="phone" required placeholder="ex: 0102030405">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adresse / Quartier *</label>
+                        <input type="text" id="address" required placeholder="ex: Cocody, Rue des Jardins">
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Commentaire (facultatif)</label>
+                        <textarea id="comments" rows="3" placeholder="Instructions pour le livreur..."></textarea>
+                    </div>
+                    
+                    <div class="order-summary-preview">
+                        <h4>Récapitulatif</h4>
+                        <div id="invoice-preview"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-block">
+                        <i class="fa-brands fa-whatsapp"></i> Commander sur WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll To Top Button -->
+    <button id="scroll-top" class="scroll-top" aria-label="Haut de page">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
