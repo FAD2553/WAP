@@ -324,6 +324,11 @@ button {
         top: -5px;
         right: -5px;
     }
+
+    /* Fix for iOS background-attachment: fixed bug */
+    .hero {
+        background-attachment: scroll;
+    }
 }
 
 /* Navigation & Dropdown */
