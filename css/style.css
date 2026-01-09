@@ -150,7 +150,7 @@ button {
     justify-content: center;
     
     /* Background Image with Overlay */
-    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('../images/01.jpg');
+    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('../images/01.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Parallax effect */
